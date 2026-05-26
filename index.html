@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>KMSU HRIS · Executive System</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="bg-orb">
+    <div class="orb o1"></div>
+    <div class="orb o2"></div>
+    <div class="orb o3"></div>
+    <div class="grid-line"></div>
+  </div>
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+
+  <div class="app">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">
+          <div class="logo-mark"><i class="fas fa-layer-group"></i></div>
+          <div class="logo-text"><h2>KMSU HRIS</h2><span>Human Resource System</span></div>
+        </div>
+      </div>
+      <nav class="sidebar-nav" id="sidebarNav">
+        <div class="nav-section">Overview</div>
+        <a href="javascript:void(0)" data-page="dashboard" class="nav-item active"><i class="fas fa-chart-line"></i> Dashboard</a>
+        <a href="javascript:void(0)" data-page="karyawan" class="nav-item"><i class="fas fa-user-tie"></i> Data Karyawan</a>
+        <a href="javascript:void(0)" data-page="statistik" class="nav-item"><i class="fas fa-chart-pie"></i> Statistik & Analitik</a>
+        <div class="nav-divider"></div>
+        <div class="nav-section">Operasional</div>
+        <a href="javascript:void(0)" data-page="penggajian" class="nav-item"><i class="fas fa-coins"></i> Penggajian <span class="nav-badge">Baru</span></a>
+        <a href="javascript:void(0)" data-page="absensi" class="nav-item"><i class="fas fa-calendar-check"></i> Rekap Absensi</a>
+        <a href="javascript:void(0)" data-page="performa" class="nav-item"><i class="fas fa-star"></i> Review Performa</a>
+        <a href="javascript:void(0)" data-page="dokumen" class="nav-item"><i class="fas fa-file-contract"></i> Dokumen HR</a>
+        <div class="nav-divider"></div>
+        <a href="javascript:void(0)" data-page="pengaturan" class="nav-item"><i class="fas fa-gear"></i> Pengaturan</a>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="user-card">
+          <div class="user-avatar">AD</div>
+          <div class="user-info"><div class="user-name">Administrator</div><div class="user-role">Super Admin</div></div>
+          <div class="user-version">v4.1</div>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+          <div><div class="page-title" id="pageTitle">Dashboard</div><div class="page-subtitle" id="pageSubtitle">UD. Karya Muda Surya Utama</div></div>
+        </div>
+        <div class="topbar-right">
+          <div class="search-box"><i class="fas fa-search"></i><input type="text" id="globalSearch" placeholder="Cari karyawan, NIK, jabatan..."></div>
+          <button class="icon-btn" id="notifBtn" title="Notifikasi"><i class="fas fa-bell"></i><span class="notif-dot"></span></button>
+          <button class="icon-btn" id="themeToggle" title="Tema"><i class="fas fa-circle-half-stroke"></i></button>
+          <button class="btn-primary" id="addEmployeeBtn"><i class="fas fa-user-plus"></i> Tambah</button>
+        </div>
+      </header>
+      <div class="page-container" id="pageContainer"></div>
+    </main>
+  </div>
+
+  <!-- Modals -->
+  <div class="modal" id="employeeModal"><div class="modal-content"><div class="modal-header"><div class="modal-title" id="modalTitle">Tambah Karyawan</div><i class="fas fa-times modal-close" data-close="employeeModal"></i></div><form id="employeeForm"><input type="hidden" id="empId"><div class="form-grid"><div class="form-group"><label>NIK</label><input type="text" id="nik" class="form-input" required></div><div class="form-group"><label>Tgl Lahir</label><input type="date" id="birthDate" class="form-input"></div></div><div class="form-group"><label>Nama Lengkap</label><input type="text" id="fullName" class="form-input" required></div><div class="form-grid"><div class="form-group"><label>Jabatan</label><input type="text" id="jabatan" class="form-input" required></div><div class="form-group"><label>Divisi</label><select id="divisi" class="form-input"><option>Produksi</option><option>HRD</option><option>Keuangan</option><option>Gudang</option><option>QC</option><option>Marketing</option><option>IT</option><option>Administrasi</option><option>Direksi</option></select></div></div><div class="form-grid"><div class="form-group"><label>Status</label><select id="status" class="form-input"><option>Tetap</option><option>Kontrak</option></select></div><div class="form-group"><label>Gender</label><select id="gender" class="form-input"><option value="L">Laki-laki</option><option value="P">Perempuan</option></select></div></div><div class="form-grid"><div class="form-group"><label>Gaji Pokok (Rp)</label><input type="number" id="gaji" class="form-input" required></div><div class="form-group"><label>Tgl Bergabung</label><input type="date" id="joinDate" class="form-input"></div></div><div class="form-grid"><div class="form-group"><label>No Telepon</label><input type="text" id="phone" class="form-input"></div><div class="form-group"><label>Email</label><input type="email" id="email" class="form-input"></div></div><div class="modal-footer"><button type="button" class="btn-secondary" data-close="employeeModal">Batal</button><button type="submit" class="btn-primary"><i class="fas fa-check"></i> Simpan</button></div></form></div></div>
+  <div class="modal" id="detailModal"><div class="modal-content" id="detailContent"></div></div>
+  <div class="modal" id="slipModal"><div class="modal-content" id="slipContent"></div></div>
+  <div id="toastContainer"></div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
