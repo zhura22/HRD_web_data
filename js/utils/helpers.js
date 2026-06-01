@@ -58,7 +58,6 @@ export function getDivisiColor(divisi) {
 
 // ========== DETAIL & SLIP MODAL ==========
 export async function showEmployeeDetail(emp) {
-  const { formatRupiah, formatDate, tenure, ageFromBirth, getAvatarColor, getDivisiColor } = await import('./helpers.js');
   const tj = Math.round(emp.gaji * 0.15);
   const thp = emp.gaji + tj - Math.round(emp.gaji * 0.03);
   const modal = document.getElementById('detailModal');
@@ -96,7 +95,6 @@ export async function showEmployeeDetail(emp) {
 }
 
 export async function showSlipModal(emp) {
-  const { formatRupiah, getAvatarColor } = await import('./helpers.js');
   const tj = Math.round(emp.gaji * 0.15);
   const bk = Math.round(emp.gaji * 0.01);
   const btk = Math.round(emp.gaji * 0.02);

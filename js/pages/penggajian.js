@@ -46,7 +46,7 @@ export function renderPenggajian() {
         </div>
         <div class="table-wrapper">
           <table class="data-table">
-            <thead><tr><th style="padding-left:18px">#</th><th>Karyawan</th><th>Divisi</th><th>Gaji Pokok</th><th style="color:var(--as)">+Tunjangan</th><th style="color:var(--ar)">−BPJS Kes</th><th style="color:var(--ar)">−BPJS TK</th><th>Take Home Pay</th><th>Slip</th></thead>
+            <thead><tr><th style="padding-left:18px">#</th><th>Karyawan</th><th>Divisi</th><th>Gaji Pokok</th><th style="color:var(--as)">+Tunjangan</th><th style="color:var(--ar)">−BPJS Kes</th><th style="color:var(--ar)">−BPJS TK</th><th>Take Home Pay</th><th>Slip</th></tr></thead>
             <tbody>
               ${rows.map((r, i) => `
                 <tr>

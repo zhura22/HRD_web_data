@@ -148,16 +148,20 @@ export function renderDashboard() {
   const divisiLabels = Object.keys(divisiMap);
   const divisiData = Object.values(divisiMap);
   const divisiColors = divisiLabels.map(l => getDivisiColor(l));
-  createChart('divisiChart', 'bar', divisiLabels, divisiData, { backgroundColor: divisiColors.map(c => c + '28'), borderColor: divisiColors, borderWidth: 2 });
-  
+  createChart('divisiChart', 'bar', divisiLabels, divisiData, {
+    dataset: { data: divisiData, backgroundColor: divisiColors.map(c => c + '28'), borderColor: divisiColors, borderWidth: 2, borderRadius: 8 }
+  });
+
   const trendLabels = ['Des', 'Jan', 'Feb', 'Mar', 'Apr', 'Mei'];
   const trendData = [total-5, total-4, total-3, total-2, total-1, total];
-  createChart('trendChart', 'line', trendLabels, trendData, { borderColor: '#00c8f0', backgroundColor: 'rgba(0,200,255,0.06)', fill: true, tension: 0.4 });
+  createChart('trendChart', 'line', trendLabels, trendData, {
+    dataset: { data: trendData, borderColor: '#00c8f0', backgroundColor: 'rgba(0,200,255,0.06)', fill: true, tension: 0.4, pointBackgroundColor: '#00c8f0', pointRadius: 4 }
+  });
 
   // Event listeners
   document.getElementById('exportCsvDashboard')?.addEventListener('click', exportToCSV);
   document.getElementById('quickAddBtn')?.addEventListener('click', () => import('../modules/forms.js').then(m => m.openEmployeeModal()));
-  document.getElementById('gotoKaryawanBtn')?.addEventListener('click', () => import('./navigation.js').then(n => n.navigateTo('karyawan')));
+  document.getElementById('gotoKaryawanBtn')?.addEventListener('click', () => import('../modules/navigation.js').then(n => n.navigateTo('karyawan')));
   document.querySelectorAll('[data-id]').forEach(el => {
     el.addEventListener('click', (e) => {
       const id = parseInt(el.dataset.id);

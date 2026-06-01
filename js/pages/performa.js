@@ -60,7 +60,7 @@ export function renderPerforma() {
         </div>
         <div class="table-wrapper">
           <table class="data-table">
-            <thead><tr><th style="padding-left:18px">Rank</th><th>Karyawan</th><th>Divisi</th><th>Skor Performa</th><th>Rate Kehadiran</th><th>Masa Kerja</th><th>Status KPI</th></thead>
+            <thead><tr><th style="padding-left:18px">Rank</th><th>Karyawan</th><th>Divisi</th><th>Skor Performa</th><th>Rate Kehadiran</th><th>Masa Kerja</th><th>Status KPI</th></tr></thead>
             <tbody>
               ${sorted.map((e, i) => {
                 const perf = e.performance || 0;
@@ -116,6 +116,3 @@ function getDivisiColor(divisi) {
   return colors[divisi] || '#7a9ab8';
 }
 
-function showToast(msg, type) {
-  import('../utils/helpers.js').then(({ showToast }) => showToast(msg, type));
-}

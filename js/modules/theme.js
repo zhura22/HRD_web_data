@@ -1,3 +1,5 @@
+import { showToast } from '../utils/helpers.js';
+
 export function toggleTheme() {
   document.body.classList.toggle('light');
   const isLight = document.body.classList.contains('light');
@@ -11,9 +13,4 @@ export function initTheme() {
     document.body.classList.add('light');
   }
   document.getElementById('themeToggle')?.addEventListener('click', toggleTheme);
-}
-
-// Small helper (toast will be imported dynamically, but for now define simple)
-function showToast(msg, type) {
-  import('../utils/helpers.js').then(({ showToast }) => showToast(msg, type));
 }

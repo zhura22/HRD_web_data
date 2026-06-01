@@ -1,5 +1,5 @@
 import { getEmployees } from '../core/data.js';
-import { formatRupiah } from '../utils/helpers.js';
+import { showToast } from '../utils/helpers.js';
 import { createChart, destroyCharts } from '../utils/charts.js';
 
 export function renderAbsensi() {
@@ -45,7 +45,7 @@ export function renderAbsensi() {
           <div class="section-header"><div class="section-title"><span class="dot"></span> Rekap Absensi per Karyawan</div></div>
           <div class="table-wrapper">
             <table class="data-table">
-              <thead><tr><th>Karyawan</th><th>Divisi</th><th>Hadir</th><th>Sakit</th><th>Izin</th><th>Alpha</th><th>Rate</th><th>Status</th></thead>
+              <thead><tr><th>Karyawan</th><th>Divisi</th><th>Hadir</th><th>Sakit</th><th>Izin</th><th>Alpha</th><th>Rate</th><th>Status</th></tr></thead>
               <tbody>
                 ${data.map(e => `
                   <tr>
@@ -119,6 +119,3 @@ function getDivisiColor(divisi) {
   return colors[divisi] || '#7a9ab8';
 }
 
-function showToast(msg, type) {
-  import('../utils/helpers.js').then(({ showToast }) => showToast(msg, type));
-}

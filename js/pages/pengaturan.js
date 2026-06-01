@@ -77,7 +77,7 @@ export function renderPengaturan() {
       resetToDefault();
       showToast('Data berhasil direset ke default', 'info');
       // reload current page to reflect changes
-      import('./navigation.js').then(nav => nav.renderCurrentPage());
+      import('../modules/navigation.js').then(nav => nav.renderCurrentPage());
     }
   });
   document.getElementById('themeSettingBtn')?.addEventListener('click', toggleTheme);
