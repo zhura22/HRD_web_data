@@ -2,7 +2,7 @@ import { initState } from './core/state.js';
 import { loadInitialData } from './core/data.js';
 import { initNavigation } from './modules/navigation.js';
 import { initTheme } from './modules/theme.js';
-import { initGlobalSearch } from './modules/ui-helpers.js';
+import { initGlobalSearch, initModalClosers } from './modules/ui-helpers.js';
 import { initFormHandler, openEmployeeModal } from './modules/forms.js';
 import { showToast } from './utils/helpers.js';
 
@@ -14,6 +14,7 @@ async function initApp() {
     initTheme();
     initGlobalSearch();
     initFormHandler();
+    initModalClosers();
 
     document.getElementById('notifBtn')?.addEventListener('click', () => showToast('Tidak ada notifikasi baru', 'info'));
     document.getElementById('addEmployeeBtn')?.addEventListener('click', openEmployeeModal);

@@ -21,7 +21,7 @@ const pageRenderers = {
 
 export function navigateTo(page) {
   if (!pageRenderers[page]) return;
-  setState({ currentPage: page, karyawanPage: 1 });
+  setState({ currentPage: page, karyawanPage: 1, searchQuery: '' });
   updateActiveNav(page);
   renderCurrentPage();
 }

@@ -93,6 +93,18 @@ function getAvatarColor(name) {
 }
 
 function getDivisiColor(divisi) {
-  const colors = { Produksi: '#00c8f0', HRD: '#a78bfa', Keuangan: '#f0c040', Gudang: '#64b4ff', QC: '#ff9d4a', Marketing: '#ff6b8a', IT: '#00e8c0', Administrasi: '#94a3b8', Direksi: '#ffd700' };
+  const colors = {
+    "Bahan Baku": "#f0a040",
+    "Sawmill"   : "#a0522d",
+    "Oven"      : "#ff7043",
+    "Produksi"  : "#00c8f0",
+    "Press"     : "#cd5c5c",
+    "Sezing"    : "#20b2aa",
+    "Pengawas"  : "#e07b39",
+    "Satpam"    : "#5c7cfa",
+    "Staff"     : "#a78bfa",
+  };
+  return colors[divisi] || '#7a9ab8';
+};
   return colors[divisi] || '#7a9ab8';
 }

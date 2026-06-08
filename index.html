@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>KMSU HRIS · Executive System</title>
+  <title>KMSU HRIS v5 · UD. Karya Muda Surya Utama</title>
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
@@ -34,7 +34,7 @@
         <div class="nav-divider"></div>
         <div class="nav-section">Operasional</div>
         <a href="javascript:void(0)" data-page="penggajian" class="nav-item"><i class="fas fa-coins"></i> Penggajian <span class="nav-badge">Baru</span></a>
-        <a href="javascript:void(0)" data-page="absensi" class="nav-item"><i class="fas fa-calendar-check"></i> Rekap Absensi</a>
+        <a href="javascript:void(0)" data-page="absensi" class="nav-item"><i class="fas fa-calendar-check"></i> Absensi Mingguan</a>
         <a href="javascript:void(0)" data-page="performa" class="nav-item"><i class="fas fa-star"></i> Review Performa</a>
         <a href="javascript:void(0)" data-page="dokumen" class="nav-item"><i class="fas fa-file-contract"></i> Dokumen HR</a>
         <div class="nav-divider"></div>
@@ -43,8 +43,8 @@
       <div class="sidebar-footer">
         <div class="user-card">
           <div class="user-avatar">AD</div>
-          <div class="user-info"><div class="user-name">Administrator</div><div class="user-role">Super Admin</div></div>
-          <div class="user-version">v4.1</div>
+          <div class="user-info"><div class="user-info"><div class="user-name">Administrator</div><div class="user-role">Super Admin</div></div></div>
+          <div class="user-version">v5.0</div>
         </div>
       </div>
     </aside>
@@ -59,7 +59,7 @@
           <div class="search-box"><i class="fas fa-search"></i><input type="text" id="globalSearch" placeholder="Cari karyawan, NIK, jabatan..."></div>
           <button class="icon-btn" id="notifBtn" title="Notifikasi"><i class="fas fa-bell"></i><span class="notif-dot"></span></button>
           <button class="icon-btn" id="themeToggle" title="Tema"><i class="fas fa-circle-half-stroke"></i></button>
-          <button class="btn-primary" id="addEmployeeBtn"><i class="fas fa-user-plus"></i> Tambah</button>
+          <button class="btn-primary" id="addEmployeeBtn"><i class="fas fa-user-plus"></i><span class="btn-text"> Tambah</span></button>
         </div>
       </header>
       <div class="page-container" id="pageContainer"></div>
@@ -67,11 +67,11 @@
   </div>
 
   <!-- Modals -->
-  <div class="modal" id="employeeModal"><div class="modal-content"><div class="modal-header"><div class="modal-title" id="modalTitle">Tambah Karyawan</div><i class="fas fa-times modal-close" data-close="employeeModal"></i></div><form id="employeeForm"><input type="hidden" id="empId"><div class="form-grid"><div class="form-group"><label>NIK</label><input type="text" id="nik" class="form-input" required></div><div class="form-group"><label>Tgl Lahir</label><input type="date" id="birthDate" class="form-input"></div></div><div class="form-group"><label>Nama Lengkap</label><input type="text" id="fullName" class="form-input" required></div><div class="form-grid"><div class="form-group"><label>Jabatan</label><input type="text" id="jabatan" class="form-input" required></div><div class="form-group"><label>Divisi</label><select id="divisi" class="form-input"><option>Produksi</option><option>HRD</option><option>Keuangan</option><option>Gudang</option><option>QC</option><option>Marketing</option><option>IT</option><option>Administrasi</option><option>Direksi</option></select></div></div><div class="form-grid"><div class="form-group"><label>Status</label><select id="status" class="form-input"><option>Tetap</option><option>Kontrak</option></select></div><div class="form-group"><label>Gender</label><select id="gender" class="form-input"><option value="L">Laki-laki</option><option value="P">Perempuan</option></select></div></div><div class="form-grid"><div class="form-group"><label>Gaji Pokok (Rp)</label><input type="number" id="gaji" class="form-input" required></div><div class="form-group"><label>Tgl Bergabung</label><input type="date" id="joinDate" class="form-input"></div></div><div class="form-grid"><div class="form-group"><label>No Telepon</label><input type="text" id="phone" class="form-input"></div><div class="form-group"><label>Email</label><input type="email" id="email" class="form-input"></div></div><div class="modal-footer"><button type="button" class="btn-secondary" data-close="employeeModal">Batal</button><button type="submit" class="btn-primary"><i class="fas fa-check"></i> Simpan</button></div></form></div></div>
+  <div class="modal" id="employeeModal"><div class="modal-content"><div class="modal-header"><div class="modal-title" id="modalTitle">Tambah Karyawan</div><i class="fas fa-times modal-close" data-close="employeeModal"></i></div><form id="employeeForm"><input type="hidden" id="empId"><div class="form-grid"><div class="form-group"><label>NIK</label><input type="text" id="nik" class="form-input" required></div><div class="form-group"><label>Tgl Lahir</label><input type="date" id="birthDate" class="form-input"></div></div><div class="form-group"><label>Nama Lengkap</label><input type="text" id="fullName" class="form-input" required></div><div class="form-grid"><div class="form-group"><label>Jabatan</label><input type="text" id="jabatan" class="form-input" required></div><div class="form-group"><label>Divisi</label><select id="divisi" class="form-input"><option value="Bahan Baku">Bahan Baku</option><option value="Sawmill">Sawmill</option><option value="Oven">Oven</option><option value="Produksi">Produksi</option><option value="Press">Press</option><option value="Sezing">Sezing</option><option value="Pengawas">Pengawas</option><option value="Satpam">Satpam</option><option value="Staff">Staff</option></select></div></div><div class="form-grid"><div class="form-group"><label>Status</label><select id="status" class="form-input"><option>Tetap</option><option>Kontrak</option></select></div><div class="form-group"><label>Gender</label><select id="gender" class="form-input"><option value="L">Laki-laki</option><option value="P">Perempuan</option></select></div></div><div class="form-grid"><div class="form-group"><label>Gaji Pokok (Rp)</label><input type="number" id="gaji" class="form-input" required></div><div class="form-group"><label>Tgl Bergabung</label><input type="date" id="joinDate" class="form-input"></div></div><div class="form-grid"><div class="form-group"><label>No Telepon</label><input type="text" id="phone" class="form-input"></div><div class="form-group"><label>Email</label><input type="email" id="email" class="form-input"></div></div><div class="modal-footer"><button type="button" class="btn-secondary" data-close="employeeModal">Batal</button><button type="submit" class="btn-primary"><i class="fas fa-check"></i> Simpan</button></div></form></div></div>
   <div class="modal" id="detailModal"><div class="modal-content" id="detailContent"></div></div>
   <div class="modal" id="slipModal"><div class="modal-content" id="slipContent"></div></div>
   <div id="toastContainer"></div>
 
-  <script type="module" src="js/app.js"></script>
+  <script src="js/bundle.js" defer></script>
 </body>
 </html>
